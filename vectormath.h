@@ -10,6 +10,7 @@
 #define tracer_vectormath_h
 
 #include <cmath>
+#include <algorithm>
 
 #ifdef M_PI
 #undef M_PI

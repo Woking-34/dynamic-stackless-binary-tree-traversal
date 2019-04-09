@@ -66,13 +66,45 @@ static RayAccelerator* createAccelerator(Bvh& bvh, const char* name) {
 	return 0;
 }
 
+/** file path helper */
+bool findFullPath(const std::string& root, std::string& filePath)
+{
+	bool fileFound = false;
+	const std::string resourcePath = root;
+
+	filePath = resourcePath + filePath;
+	for (unsigned int i = 0; i < 16; ++i)
+	{
+		std::ifstream file;
+		file.open(filePath.c_str());
+		if (file.is_open())
+		{
+			fileFound = true;
+			break;
+		}
+
+		filePath = "../" + filePath;
+	}
+
+	return fileFound;
+
+}
+
 int main(int argc, const char* argv[]) {
 	assert(sizeof(Triangle) == 64);
 	assert(sizeof(Bvh::Node) == 64);
 	assert(sizeof(Tracer::HitPoint) == 32);
-	
+
+	std::string rootStr = "data/";
+	std::string filePath = "battlefield.obj";
+	bool fileFound = findFullPath(rootStr, filePath);
+	if (fileFound == false)
+	{
+		std::cout << "Mesh file not found! Exiting..." << std::endl;
+	}
+
 	std::cout << "Loading obj..." << std::flush;
-	Mesh mesh("battlefield.obj", false);
+	Mesh mesh(filePath.c_str(), false);
 	std::cout << "done." << std::endl;
 	
 	std::cout << "Building bvh..." << std::flush;
