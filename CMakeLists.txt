@@ -21,34 +21,35 @@ IF(WIN32)
 ENDIF(WIN32)
 
 set(STACKLESSBVH_SRC
-	aabb.h
-	alignedallocator.h
-	bvh.h
-	bvh.cpp
-	camera.h
-	camera.cpp
-	hapalaaccelerator.h
-	hapalaaccelerator.cpp
-	implicitaaccelerator.h
-	implicitaaccelerator.cpp
-	implicitbaccelerator.h
-	implicitbaccelerator.cpp
-	laineaccelerator.h
-	mesh.h	
-	mesh.cpp
-	random.h
-	ray.h
-	rayaccelerator.h
-	sparseaccelerator.h
-	sparseaccelerator.cpp
-	stackaccelerator.h
-	stackaccelerator.cpp
-	tracer.h
-	tracer.cpp
-	triangle.h
-	vectormath.h
+	src/aabb.h
+	src/alignedallocator.h
+	src/bvh.h
+	src/bvh.cpp
+	src/camera.h
+	src/camera.cpp
+	src/hapalaaccelerator.h
+	src/hapalaaccelerator.cpp
+	src/implicitaaccelerator.h
+	src/implicitaaccelerator.cpp
+	src/implicitbaccelerator.h
+	src/implicitbaccelerator.cpp
+	src/laineaccelerator.h
+	src/mesh.h	
+	src/mesh.cpp
+	src/random.h
+	src/ray.h
+	src/rayaccelerator.h
+	src/sparseaccelerator.h
+	src/sparseaccelerator.cpp
+	src/stackaccelerator.h
+	src/stackaccelerator.cpp
+	src/tracer.h
+	src/tracer.cpp
+	src/triangle.h
+	src/vectormath.h
 	
-	main.cpp
+	src/main.cpp
 )
 
 add_executable(stackless_bvh ${STACKLESSBVH_SRC})
+target_include_directories(stackless_bvh PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
