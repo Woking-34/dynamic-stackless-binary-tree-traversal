@@ -8,6 +8,10 @@
 
 #include "implicitaaccelerator.h"
 
+#ifdef _WIN32
+#include <intrin.h>
+#endif
+
 ImplicitAAccelerator::ImplicitAAccelerator(Bvh& bvh) : bvh(bvh) {
 	bvh.makeImplicit();
 }

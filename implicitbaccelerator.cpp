@@ -8,6 +8,10 @@
 
 #include "implicitbaccelerator.h"
 
+#ifdef _WIN32
+#include <intrin.h>
+#endif
+
 inline unsigned sibling(unsigned levelIndex) {
 	return levelIndex + 1 - ((levelIndex & 1) << 1);
 }
